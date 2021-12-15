@@ -12,9 +12,11 @@ namespace ProjetoFinalDoModulo9_Cristian_Moura_Candimba
         {
             int a,b,c,d,e,f,g,h,i;
 
+            Console.WriteLine("====================================");
             Console.WriteLine("AVISO NAO DIGITAR 0!!!!!11");
             Console.WriteLine("Escolha o personagem \n1-Gladiador 2-Orochi 3-Shaolin");
             Console.WriteLine("Digite o numero e Clique na tecla Enter para continuar");
+            Console.WriteLine("====================================");
             a = Convert.ToInt32(Console.ReadLine());
             Personagem Lenda = new Personagem();
             
@@ -58,12 +60,14 @@ namespace ProjetoFinalDoModulo9_Cristian_Moura_Candimba
             d = Lenda.vida;
             f = Lenda.defesa;
             Random rnd = new Random();
+            Console.WriteLine("====================================");
             Console.WriteLine(Lenda.nome);
             Console.WriteLine("Atributos:");
             Console.WriteLine("Vida:" + Lenda.vida);
             Console.WriteLine("Defesa:" + Lenda.defesa);
             Console.WriteLine("Dano:" + Lenda.dano);
             Console.WriteLine("Clique na tecla Enter para continuar");
+            Console.WriteLine("====================================");
 
             Console.ReadLine();
             Personagem Inimigo = new Personagem();
@@ -89,132 +93,217 @@ namespace ProjetoFinalDoModulo9_Cristian_Moura_Candimba
                 Console.WriteLine("Selecione um ataque \n1-Ataque basico 2-Ataque rapido e bloquear parcialmente \n3-Ataque Poderoso 4-Bloquear");
                 Console.WriteLine("====================================");
                 b = Convert.ToInt32(Console.ReadLine());
-                if (b == 1)
+
+                switch (b)
                 {
-                    Console.Clear();
-                    c = Lenda.dano - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                }
-                if (b == 2)
-                {
-                    Console.Clear();
-                    c = (Lenda.dano - 5) - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa + 5;
-                }
-                if (b == 3)
-                {
-                    Console.Clear();
-                    c = (Lenda.dano + 10) - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa - 10;
+                    case 1:
+                        {
+                            Console.Clear();
+                            c = Lenda.dano - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Basico");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.Clear();
+                            c = (Lenda.dano - 5) - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Rapido e Bloquear parcialmente");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa + 5;
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.Clear();
+                            c = (Lenda.dano + 10) - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Poderoso");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa - 10;
+                            break;                        
+                        }
+                    case 4:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou Bloquear");
+                            Console.WriteLine("Passas-te o turno a Bloquear");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa + 10;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Passas-te o turno sem fazer nada :c");
+                            Console.WriteLine("====================================");
+                            Console.Clear();
+                            break;
+                        }
 
                 }
-                if (b == 4)
-                {
-
-                    Console.Clear();
-                    Console.WriteLine("Passas-te o turno a Bloquear");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa + 10;
-                   
-                }
+                
                 Inimigo.defesa = g;
                 e = rnd.Next(1, 4);
 
-                if (e == 1)
+                switch (e)
                 {
-                    Console.Clear();
-                    c = Inimigo.dano - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine("O Inimigo Fez um ataque basico");
-                    Console.WriteLine(Inimigo.nome +" causou " + c + " de dano em voce");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-
-                }
-                if (e == 2)
-                {
-                    Console.Clear();
-                    c = (Inimigo.dano - 5) - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine("O Inimigo usou o ataque rapido e bloquear");
-                    Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Inimigo.defesa = Inimigo.defesa + 5;
-                    Console.Clear();
-                }
-                if (e == 3)
-                {
-                    Console.Clear();
-                    c = (Inimigo.dano + 10) - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine("O Inimigo usou o ataque poderoso.");
-                    Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce.");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Inimigo.defesa = Inimigo.defesa - 10;
-                    Console.Clear();
-                }
-                if (e == 4)
-                {
-
-                    Console.Clear();
-                    Console.WriteLine("O Inimigo usou Bloquear.");
-                    Console.WriteLine("O "+ Inimigo.nome + " passou o turno a Bloquear.");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Inimigo.defesa = Inimigo.defesa + 15;
-
+                    case 1:
+                        {
+                            Console.Clear();
+                            c = Inimigo.dano - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo Fez um ataque basico");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Console.Clear();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.Clear();
+                            c = (Inimigo.dano - 5) - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou o ataque rapido e bloquear");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Inimigo.defesa = Inimigo.defesa + 5;
+                            Console.Clear();
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.Clear();
+                            c = (Inimigo.dano + 10) - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou o ataque poderoso.");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce.");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Inimigo.defesa = Inimigo.defesa - 10;
+                            Console.Clear();
+                            break;
+                        }
+                    case 4:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou Bloquear.");
+                            Console.WriteLine("O " + Inimigo.nome + " passou o turno a Bloquear.");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Inimigo.defesa = Inimigo.defesa + 15;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("O Inimigo não fez nada.");
+                            break;
+                        }
                 }
                 Lenda.defesa = f;
+                if (Lenda.vida <= 0)
+                {
+                    Console.WriteLine("Morres-te noob");
+                    Console.ReadLine();
+                    Environment.Exit(0);
+
+                }
             }
-            Console.WriteLine("PARABENS MATAS-TE O NOBALHAO (MOURA) EZ");
+            Console.WriteLine("PARABENS GANHAS-TE AO WARDEN");
             Console.ReadLine();
             Console.Clear();
 
             Lenda.vida = d;
+            Console.WriteLine("====================================");
             Console.WriteLine("Escolha um dos upgrades");
             Console.WriteLine("1- Vida 2-Dano 3-Defesa");
+            Console.WriteLine("====================================");
             h = Convert.ToInt32(Console.ReadLine());
-            if (h == 1)
+            switch (h)
             {
-                Console.WriteLine("");
-                i = tier();
-                Lenda.vida = Lenda.vida + i;
-                d = Lenda.vida;
-                Console.ReadLine();
-            }
-            if (h == 2)
-            {
-                Console.WriteLine("");
-                i = tier();
-                Lenda.dano = Lenda.dano + i;
-                Console.ReadLine();
-            }
-            if (h == 3)
-            {
-                Console.WriteLine("");
-                i = tier();
-                Lenda.defesa = Lenda.defesa + i;
-                Console.ReadLine();
+                case 1:
+                    {
+                        Console.WriteLine("");
+                        i = tier1();
+                        Lenda.vida = Lenda.vida + i;
+                        d = Lenda.vida;
+                        Console.ReadLine();
+                        break;
+                    }
+                case 2:
+                    {
+                        Console.WriteLine("");
+                        i = tier1();
+                        Lenda.dano = Lenda.dano + i;
+                        Console.ReadLine();
+                        break;
+                    }
+                case 3:
+                    {
+                        Console.WriteLine("");
+                        i = tier1();
+                        Lenda.defesa = Lenda.defesa + i;
+                        Console.ReadLine();
+                        break;
+                    }
+
             }
             Console.Clear();
             Console.WriteLine("Nivel 2");
@@ -236,125 +325,217 @@ namespace ProjetoFinalDoModulo9_Cristian_Moura_Candimba
                 Console.WriteLine("Selecione um ataque \n1-Ataque basico 2-Ataque rapido e defesa \n3-Ataque Poderoso 4-Bloquear");
                 Console.WriteLine("====================================");
                 b = Convert.ToInt32(Console.ReadLine());
-                if (b == 1)
+                switch (b)
                 {
-                    Console.Clear();
-                    c = Lenda.dano - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                }
-                if (b == 2)
-                {
-                    Console.Clear();
-                    c = (Lenda.dano - 5) - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa + 5;
-                }
-                if (b == 3)
-                {
-                    Console.Clear();
-                    c = (Lenda.dano + 10) - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa - 10;
+                    case 1:
+                        {
+                            Console.Clear();
+                            c = Lenda.dano - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Basico");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.Clear();
+                            c = (Lenda.dano - 5) - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Rapido e bloquear parcialmente");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa + 5;
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.Clear();
+                            c = (Lenda.dano + 10) - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Poderoso");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa - 10;
+                            break;
+                        }
+                    case 4:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou Bloquear");
+                            Console.WriteLine("Passas-te o turno a Bloquear");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa + 10;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Passas-te o turno sem fazer nada :c");
+                            Console.WriteLine("====================================");
+                            Console.Clear();
+                            break;
+                        }
 
                 }
-                if (b == 4)
-                {
 
-                    Console.Clear();
-                    Console.WriteLine("Passas-te o turno a Bloquear");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa + 10;
-
-                }
                 Inimigo.defesa = g;
                 e = rnd.Next(1, 4);
 
-                if (e == 1)
+                switch (e)
                 {
-                    Console.Clear();
-                    c = Inimigo.dano - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-
-                }
-                if (e == 2)
-                {
-                    Console.Clear();
-                    c = (Inimigo.dano - 5) - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Inimigo.defesa = Inimigo.defesa + 5;
-                    Console.Clear();
-                }
-                if (e == 3)
-                {
-                    Console.Clear();
-                    c = (Inimigo.dano + 10) - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Inimigo.defesa = Inimigo.defesa - 10;
-                    Console.Clear();
-                }
-                if (e == 4)
-                {
-
-                    Console.Clear();
-                    Console.WriteLine("O " + Inimigo.nome + " passou o turno a Bloquear");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Inimigo.defesa = Inimigo.defesa + 15;
-
+                    case 1:
+                        {
+                            Console.Clear();
+                            c = Inimigo.dano - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo Fez um ataque basico");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Console.Clear();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.Clear();
+                            c = (Inimigo.dano - 5) - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou o ataque rapido e bloquear");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Inimigo.defesa = Inimigo.defesa + 5;
+                            Console.Clear();
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.Clear();
+                            c = (Inimigo.dano + 10) - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou o ataque poderoso.");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce.");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Inimigo.defesa = Inimigo.defesa - 10;
+                            Console.Clear();
+                            break;
+                        }
+                    case 4:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou Bloquear.");
+                            Console.WriteLine("O " + Inimigo.nome + " passou o turno a Bloquear.");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Inimigo.defesa = Inimigo.defesa + 15;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("O Inimigo não fez nada.");
+                            break;
+                        }
                 }
                 Lenda.defesa = f;
+                if (Lenda.vida <= 0)
+                {
+                    Console.WriteLine("Morres-te noob");
+                    Console.ReadLine();
+                    Environment.Exit(0);
+
+                }
             }
+            Console.WriteLine("PARABENS GANHAS-TE AO LAWBRINGER");
+            Console.ReadLine();
+            Console.Clear();
             Lenda.vida = d;
+            Console.WriteLine("====================================");
             Console.WriteLine("Escolha um dos upgrades");
             Console.WriteLine("1- Vida 2-Dano 3-Defesa");
+            Console.WriteLine("====================================");
             h = Convert.ToInt32(Console.ReadLine());
-            if (h == 1)
+            switch (h)
             {
-                Console.WriteLine("");
-                i = tier();
-                Lenda.vida = Lenda.vida + i;
-                d = Lenda.vida;
-                Console.ReadLine();
+                case 1:
+                    {
+                        Console.WriteLine("");
+                        i = tier2();
+                        Lenda.vida = Lenda.vida + i;
+                        d = Lenda.vida;
+                        Console.ReadLine();
+                        break;
+                    }
+                case 2:
+                    {
+                        Console.WriteLine("");
+                        i = tier2();
+                        Lenda.dano = Lenda.dano + i;
+                        Console.ReadLine();
+                        break;
+                    }
+                case 3:
+                    {
+                        Console.WriteLine("");
+                        i = tier2();
+                        Lenda.defesa = Lenda.defesa + i;
+                        Console.ReadLine();
+                        break;
+                    }
+
             }
-            if (h == 2)
-            {
-                Console.WriteLine("");
-                i = tier();
-                Lenda.dano = Lenda.dano + i;
-                Console.ReadLine();
-            }
-            if (h == 3)
-            {
-                Console.WriteLine("");
-                i = tier();
-                Lenda.defesa = Lenda.defesa + i;
-                Console.ReadLine();
-            }
+            
 
             Inimigo.nome = "HighLander";
             Inimigo.vida = 120;
@@ -379,132 +560,221 @@ namespace ProjetoFinalDoModulo9_Cristian_Moura_Candimba
                 Console.WriteLine("Selecione um ataque \n1-Ataque basico 2-Ataque rapido e bloquear parcialmente \n3-Ataque Poderoso 4-Bloquear");
                 Console.WriteLine("====================================");
                 b = Convert.ToInt32(Console.ReadLine());
-                if (b == 1)
+                switch (b)
                 {
-                    Console.Clear();
-                    c = Lenda.dano - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                }
-                if (b == 2)
-                {
-                    Console.Clear();
-                    c = (Lenda.dano - 5) - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa + 5;
-                }
-                if (b == 3)
-                {
-                    Console.Clear();
-                    c = (Lenda.dano + 10) - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa - 10;
+                    case 1:
+                        {
+                            Console.Clear();
+                            c = Lenda.dano - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Basico");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.Clear();
+                            c = (Lenda.dano - 5) - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Rapido e Bloquear Parcialmente");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa + 5;
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.Clear();
+                            c = (Lenda.dano + 10) - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Poderoso");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa - 10;
+                            break;
+                        }
+                    case 4:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou Bloquear");
+                            Console.WriteLine("Passas-te o turno a Bloquear");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa + 10;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Passas-te o turno sem fazer nada :c");
+                            Console.WriteLine("====================================");
+                            Console.Clear();
+                            break;
+                        }
 
                 }
-                if (b == 4)
-                {
 
-                    Console.Clear();
-                    Console.WriteLine("Passas-te o turno a Bloquear");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa + 10;
-
-                }
                 Inimigo.defesa = g;
                 e = rnd.Next(1, 4);
 
-                if (e == 1)
+                switch (e)
                 {
-                    Console.Clear();
-                    c = Inimigo.dano - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine("O Inimigo Fez um ataque basico");
-                    Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-
-                }
-                if (e == 2)
-                {
-                    Console.Clear();
-                    c = (Inimigo.dano - 5) - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine("O Inimigo usou o ataque rapido e bloquear");
-                    Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Inimigo.defesa = Inimigo.defesa + 5;
-                    Console.Clear();
-                }
-                if (e == 3)
-                {
-                    Console.Clear();
-                    c = (Inimigo.dano + 10) - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine("O Inimigo usou o ataque poderoso.");
-                    Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce.");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Inimigo.defesa = Inimigo.defesa - 10;
-                    Console.Clear();
-                }
-                if (e == 4)
-                {
-
-                    Console.Clear();
-                    Console.WriteLine("O Inimigo usou Bloquear.");
-                    Console.WriteLine("O " + Inimigo.nome + " passou o turno a Bloquear.");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Inimigo.defesa = Inimigo.defesa + 15;
-
+                    case 1:
+                        {
+                            Console.Clear();
+                            c = Inimigo.dano - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo Fez um ataque basico");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Console.Clear();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.Clear();
+                            c = (Inimigo.dano - 5) - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou o ataque rapido e bloquear");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Inimigo.defesa = Inimigo.defesa + 5;
+                            Console.Clear();
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.Clear();
+                            c = (Inimigo.dano + 10) - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou o ataque poderoso.");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce.");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Inimigo.defesa = Inimigo.defesa - 10;
+                            Console.Clear();
+                            break;
+                        }
+                    case 4:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou Bloquear.");
+                            Console.WriteLine("O " + Inimigo.nome + " passou o turno a Bloquear.");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Inimigo.defesa = Inimigo.defesa + 15;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("O Inimigo não fez nada.");
+                            break;
+                        }
                 }
                 Lenda.defesa = f;
+                if (Lenda.vida <= 0)
+                {
+                    Console.WriteLine("Morres-te noob");
+                    Console.ReadLine();
+                    Environment.Exit(0);
+
+                }
             }
+            Console.WriteLine("PARABENS GANHAS-TE AO HIGHLANDER");
+            Console.ReadLine();
+            Console.Clear();
+
             Lenda.vida = d;
+            Console.WriteLine("====================================");
             Console.WriteLine("Escolha um dos upgrades");
             Console.WriteLine("1- Vida 2-Dano 3-Defesa");
+            Console.WriteLine("====================================");
             h = Convert.ToInt32(Console.ReadLine());
-            if (h == 1)
+            switch (h)
             {
-                Console.WriteLine("");
-                i = tier();
-                Lenda.vida = Lenda.vida + i;
-                d = Lenda.vida;
-                Console.ReadLine();
+                case 1:
+                    {
+                        Console.WriteLine("");
+                        i = tier3();
+                        Lenda.vida = Lenda.vida + i;
+                        d = Lenda.vida;
+                        Console.ReadLine();
+                        break;
+                    }
+                case 2:
+                    {
+                        Console.WriteLine("");
+                        i = tier3();
+                        Lenda.dano = Lenda.dano + i;
+                        Console.ReadLine();
+                        break;
+                    }
+                case 3:
+                    {
+                        Console.WriteLine("");
+                        i = tier3();
+                        Lenda.defesa = Lenda.defesa + i;
+                        Console.ReadLine();
+                        break;
+                    }
+
             }
-            if (h == 2)
-            {
-                Console.WriteLine("");
-                i = tier();
-                Lenda.dano = Lenda.dano + i;
-                Console.ReadLine();
-            }
-            if (h == 3)
-            {
-                Console.WriteLine("");
-                i = tier();
-                Lenda.defesa = Lenda.defesa + i;
-                Console.ReadLine();
-            }
+           
             Inimigo.nome = "Hitokiri";
             Inimigo.vida = 100;
-            Inimigo.defesa = 25;
+            Inimigo.defesa = 0;
             Inimigo.dano = 30;
             
             
@@ -526,106 +796,198 @@ namespace ProjetoFinalDoModulo9_Cristian_Moura_Candimba
                 Console.WriteLine("Selecione um ataque \n1-Ataque basico 2-Ataque rapido e bloquear parcialmente \n3-Ataque Poderoso 4-Bloquear");
                 Console.WriteLine("====================================");
                 b = Convert.ToInt32(Console.ReadLine());
-                if (b == 1)
+                switch (b)
                 {
-                    Console.Clear();
-                    c = Lenda.dano - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                }
-                if (b == 2)
-                {
-                    Console.Clear();
-                    c = (Lenda.dano - 5) - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa + 5;
-                }
-                if (b == 3)
-                {
-                    Console.Clear();
-                    c = (Lenda.dano + 10) - Inimigo.defesa;
-                    Inimigo.vida = Inimigo.vida - c;
-                    Console.WriteLine("Causou " + c + " de dano");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa - 10;
+                    case 1:
+                        {
+                            Console.Clear();
+                            c = Lenda.dano - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Basico");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.Clear();
+                            c = (Lenda.dano - 5) - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Rapido e Bloquear parcialmente");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa + 5;
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.Clear();
+                            c = (Lenda.dano + 10) - Inimigo.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Inimigo.vida = Inimigo.vida - c;
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou o Ataque Poderoso");
+                            Console.WriteLine("Causou " + c + " de dano");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa - 10;
+                            break;
+                        }
+                    case 4:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Você usou Bloquear");
+                            Console.WriteLine("Passas-te o turno a Bloquear");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Lenda.defesa = Lenda.defesa + 10;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("Passas-te o turno sem fazer nada :c");
+                            Console.WriteLine("====================================");
+                            Console.Clear();
+                            break;
+                        }
 
                 }
-                if (b == 4)
-                {
 
-                    Console.Clear();
-                    Console.WriteLine("Passas-te o turno a Bloquear");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Lenda.defesa = Lenda.defesa + 10;
-
-                }
                 Inimigo.defesa = g;
                 e = rnd.Next(1, 4);
 
-                if (e == 1)
+                switch (e)
                 {
-                    Console.Clear();
-                    c = Inimigo.dano - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine("O Inimigo Fez um ataque basico");
-                    Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-
-                }
-                if (e == 2)
-                {
-                    Console.Clear();
-                    c = (Inimigo.dano - 5) - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine("O Inimigo usou o ataque rapido e bloquear");
-                    Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Inimigo.defesa = Inimigo.defesa + 5;
-                    Console.Clear();
-                }
-                if (e == 3)
-                {
-                    Console.Clear();
-                    c = (Inimigo.dano + 10) - Lenda.defesa;
-                    Lenda.vida = Lenda.vida - c;
-                    Console.WriteLine("O Inimigo usou o ataque poderoso.");
-                    Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce.");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Inimigo.defesa = Inimigo.defesa - 10;
-                    Console.Clear();
-                }
-                if (e == 4)
-                {
-
-                    Console.Clear();
-                    Console.WriteLine("O Inimigo usou Bloquear.");
-                    Console.WriteLine("O " + Inimigo.nome + " passou o turno a Bloquear.");
-                    Console.WriteLine("Clique na tecla Enter para continuar");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Inimigo.defesa = Inimigo.defesa + 15;
-
+                    case 1:
+                        {
+                            Console.Clear();
+                            c = Inimigo.dano - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo Fez um ataque basico");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Console.Clear();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.Clear();
+                            c = (Inimigo.dano - 5) - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou o ataque rapido e bloquear");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Inimigo.defesa = Inimigo.defesa + 5;
+                            Console.Clear();
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.Clear();
+                            c = (Inimigo.dano + 10) - Lenda.defesa;
+                            if (c < 0)
+                            {
+                                c = 0;
+                            }
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou o ataque poderoso.");
+                            Console.WriteLine(Inimigo.nome + " causou " + c + " de dano em voce.");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Lenda.vida = Lenda.vida - c;
+                            Inimigo.defesa = Inimigo.defesa - 10;
+                            Console.Clear();
+                            break;
+                        }
+                    case 4:
+                        {
+                            Console.Clear();
+                            Console.WriteLine("====================================");
+                            Console.WriteLine("O Inimigo usou Bloquear.");
+                            Console.WriteLine("O " + Inimigo.nome + " passou o turno a Bloquear.");
+                            Console.WriteLine("Clique na tecla Enter para continuar");
+                            Console.WriteLine("====================================");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Inimigo.defesa = Inimigo.defesa + 15;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("O Inimigo não fez nada.");
+                            break;
+                        }
                 }
                 Lenda.defesa = f;
+                if (Lenda.vida <= 0)
+                {
+                    Console.WriteLine("Morres-te noob");
+                    Console.ReadLine();
+                    Environment.Exit(0);
+
+                }
             }
+            Lenda.vida = d;
+            Console.WriteLine("PARABENS GANHAS-TE A HITOKIRI");
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("==========================================");
+            Console.WriteLine("--------------TEMOS_UM_CAMPEÃO------------");
+            Console.WriteLine("O "+ Lenda.nome +" acabou com os seguintes Atributos");
+            Console.WriteLine("Atributos:");
+            Console.WriteLine("Vida:" + Lenda.vida);
+            Console.WriteLine("Defesa:" + Lenda.defesa);
+            Console.WriteLine("Dano:" + Lenda.dano);
+            Console.WriteLine("Clique na tecla Enter para fechar");
+            Console.WriteLine("==========================================");
+            Console.ReadLine();
+
+
+
         }
 
-        static int tier()
+        static int tier1()
         {
             int i;
             Random tier = new Random();
@@ -633,27 +995,70 @@ namespace ProjetoFinalDoModulo9_Cristian_Moura_Candimba
 
             if (i<=50)
             {
-                Console.WriteLine("Tier 1");
-                return 5;
+                Console.WriteLine("Ganhou um upgrade Tier 1");
+                return 10;
             }
             if (i>50 || i <= 75)
             {
-                Console.WriteLine("Tier 2");
-                return 10;
+                Console.WriteLine("Ganhou um upgrade Tier 2");
+                return 15;
             }
             if (i>75 || i <= 90)
             {
-                Console.WriteLine("Tier 3");
-                return 15;
+                Console.WriteLine("Ganhou um upgrade Tier 3");
+                return 20;
             }
             if (i>90 || i <= 100)
             {
-                Console.WriteLine("Tier 4");
-                return 20;
+                Console.WriteLine("Ganhou um Upgrade Tier 4");
+                return 25;
             }
             return 0;
         }
 
+        static int tier2()
+        {
+            int i;
+            Random tier = new Random();
+            i = tier.Next(50, 100);
+
+            
+            if (i >= 50 || i <= 75)
+            {
+                Console.WriteLine("Ganhou um upgrade Tier 2");
+                return 15;
+            }
+            if (i > 75 || i <= 90)
+            {
+                Console.WriteLine("Ganhou um upgrade Tier 3");
+                return 20;
+            }
+            if (i > 90 || i <= 100)
+            {
+                Console.WriteLine("Ganhou um Upgrade Tier 4");
+                return 25;
+            }
+            return 0;
+        }
+
+        static int tier3()
+        {
+            int i;
+            Random tier = new Random();
+            i = tier.Next(75, 100);
+
+            if (i >= 75 || i <= 90)
+            {
+                Console.WriteLine("Ganhou um Upgrade Tier 3");
+                return 20;
+            }
+            if (i > 90 || i <= 100)
+            {
+                Console.WriteLine("Ganhou um Upgrade Tier 4");
+                return 25;
+            }
+            return 0;
+        }
         /*
         static int DanoDefendido(object Inimigo, object Lenda)
         {

@@ -8,10 +8,11 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>ProjetoFinalDoModulo9_Cristian_Moura_Candimba</RootNamespace>
     <AssemblyName>ProjetoFinalDoModulo9-Cristian_Moura_Candimba</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
